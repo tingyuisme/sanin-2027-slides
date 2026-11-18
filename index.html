@@ -518,6 +518,35 @@
       border-color: var(--kaki);
     }
 
+    /* 美食圖鑑底部：左景點連結 ＋ 右對應停車場連結 一對一並排 */
+    .map-pair-list {
+      margin-top: auto;
+      padding-top: 6px;
+      border-top: 1px dashed var(--hairline);
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .map-pair-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 6px;
+      align-items: center;
+    }
+    .map-pair-row .ext-link {
+      width: 100%;
+      justify-content: flex-start;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .svg-halo {
+      paint-order: stroke;
+      stroke: #F6F1E9;
+      stroke-width: 6px;
+      stroke-linejoin: round;
+    }
+
     /* 溫馨提醒框 */
     .note-banner {
       background: var(--kaki-soft);
@@ -880,56 +909,72 @@
         <h1>山陰「東西雙翼 8 字型」不走回頭路自駕地圖</h1>
       </div>
 
-      <div class="paper-card" style="padding: 10px 16px; flex: 0 0 auto;">
-        <svg viewBox="0 0 960 205" width="100%" style="display:block;">
-          <rect x="0" y="0" width="960" height="205" rx="10" fill="#F6F1E9"/>
-          <text x="480" y="22" text-anchor="middle" fill="#4A6B5B" font-size="12.5" font-weight="700" letter-spacing="2.5">〰 日本海 SEA OF JAPAN（平坦沿海國道 9 號 ＆ 山陰自動車道）〰</text>
+      <div class="paper-card" style="padding: 12px 16px; flex: 1 1 auto; justify-content: center;">
+        <svg viewBox="0 0 960 246" width="100%" height="100%" style="display:block; max-height: 295px;">
+          <rect x="0" y="0" width="960" height="246" rx="10" fill="#F6F1E9"/>
+          <text x="480" y="24" text-anchor="middle" fill="#4A6B5B" font-size="12.5" font-weight="700" letter-spacing="2.5">〰 日本海 SEA OF JAPAN（平坦沿海國道 9 號 ＆ 山陰自動車道）〰</text>
 
-          <path d="M 470 105 C 410 148, 340 158, 270 148 C 180 138, 110 124, 85 90 C 70 62, 190 48, 320 60 C 400 68, 440 80, 470 105" fill="none" stroke="#4A6B5B" stroke-width="3.5" stroke-dasharray="7 5"/>
-          <path d="M 470 105 C 560 52, 730 48, 855 80 C 890 110, 770 148, 675 144 C 590 138, 530 134, 470 105" fill="none" stroke="#C85A32" stroke-width="3.5"/>
+          <!-- 西翼（島根）綠虛線 ＆ 東翼（鳥取）紅實線 -->
+          <path d="M 475 124 C 415 166, 335 182, 235 174 C 155 166, 95 140, 88 104 C 82 68, 195 54, 315 66 C 395 74, 442 96, 475 124" fill="none" stroke="#4A6B5B" stroke-width="3.5" stroke-dasharray="7 5"/>
+          <path d="M 475 124 C 565 68, 735 58, 855 96 C 885 132, 815 174, 745 174 C 655 174, 560 162, 475 124" fill="none" stroke="#C85A32" stroke-width="3.5"/>
 
-          <circle cx="95" cy="90" r="9" fill="#4A6B5B"/><text x="95" y="116" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3E3028">D6 玉作・出雲大社・日御碕</text>
-          <text x="95" y="132" text-anchor="middle" font-size="10.5" fill="#6E5D53">(住 Dormy Inn 出雲 ♨️)</text>
+          <!-- D6 出雲・日御碕（最左端） -->
+          <circle cx="88" cy="104" r="9" fill="#4A6B5B"/>
+          <text class="svg-halo" x="102" y="132" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3E3028">D6 玉作・出雲大社・日御碕</text>
+          <text class="svg-halo" x="102" y="149" text-anchor="middle" font-size="10.5" fill="#6E5D53">(住 Dormy Inn 出雲 ♨️)</text>
 
-          <circle cx="255" cy="148" r="8.5" fill="#4A6B5B"/><text x="255" y="172" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3E3028">D5 八重垣・宍道湖・漁師小屋麥穗</text>
-          <text x="255" y="187" text-anchor="middle" font-size="10.5" fill="#C85A32">(住 御宿 野乃 松江 ♨️)</text>
+          <!-- D5 八重垣・宍道湖・麥穗（左下） -->
+          <circle cx="235" cy="174" r="8.5" fill="#4A6B5B"/>
+          <text class="svg-halo" x="225" y="198" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3E3028">D5 八重垣・宍道湖・漁師小屋麥穗</text>
+          <text class="svg-halo" x="225" y="215" text-anchor="middle" font-size="10.5" fill="#C85A32">(住 御宿 野乃 松江 ♨️)</text>
 
-          <circle cx="305" cy="58" r="8.5" fill="#4A6B5B"/><text x="305" y="42" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3E3028">D7 松江城・銀山和牛・由志園</text>
+          <!-- D7 松江城・銀山和牛・由志園（左上） -->
+          <circle cx="305" cy="66" r="8.5" fill="#4A6B5B"/>
+          <text class="svg-halo" x="305" y="48" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3E3028">D7 松江城・銀山和牛・由志園</text>
 
-          <circle cx="395" cy="136" r="7.5" fill="#4A6B5B"/><text x="395" y="156" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3E3028">D5上午 足立美術館</text>
+          <!-- D5上午 足立美術館（中左） -->
+          <circle cx="385" cy="154" r="7.5" fill="#4A6B5B"/>
+          <text class="svg-halo" x="380" y="176" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3E3028">D5上午 足立美術館</text>
 
-          <circle cx="470" cy="105" r="13" fill="#C85A32" stroke="#FFFDF9" stroke-width="3"/>
-          <text x="470" y="82" text-anchor="middle" font-size="12.5" font-weight="900" fill="#C85A32">✈️ 米子機場 / 境港 (中心)</text>
-          <text x="470" y="132" text-anchor="middle" font-size="10.8" font-weight="700" fill="#3E3028">D1・D4住米子｜D7住野乃境港｜D8境港・日吉津AEON</text>
+          <!-- 中心樞紐：米子機場 / 境港 -->
+          <circle cx="475" cy="124" r="13" fill="#C85A32" stroke="#FFFDF9" stroke-width="3"/>
+          <text class="svg-halo" x="475" y="84" text-anchor="middle" font-size="12.5" font-weight="900" fill="#C85A32">✈️ 米子機場 / 境港 (中心)</text>
+          <text class="svg-halo" x="475" y="102" text-anchor="middle" font-size="10.8" font-weight="700" fill="#3E3028">D1・D4住米子｜D7住野乃境港｜D8境港・日吉津AEON</text>
 
-          <circle cx="585" cy="136" r="8.5" fill="#C85A32"/><text x="585" y="159" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3E3028">D4 大山雪道・豪圓湯院・花回廊</text>
+          <!-- D4 大山雪道・豪圓湯院・花回廊（中右，與 D3 拉開 205px 水平距離＋上下錯開，絕不重疊） -->
+          <circle cx="565" cy="154" r="8.5" fill="#C85A32"/>
+          <text class="svg-halo" x="555" y="178" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3E3028">D4 大山雪道・豪圓湯院・花回廊</text>
 
-          <circle cx="720" cy="142" r="8.5" fill="#C85A32"/><text x="720" y="165" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3E3028">D3 白兔・倉吉白壁・柯南小鎮</text>
-          <text x="720" y="181" text-anchor="middle" font-size="10.5" fill="#C85A32">(住 羽合溫泉 望湖樓 ♨️)</text>
+          <!-- D3 白兔・倉吉白壁・柯南小鎮（右下） -->
+          <circle cx="755" cy="173" r="8.5" fill="#C85A32"/>
+          <text class="svg-halo" x="765" y="198" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3E3028">D3 白兔・倉吉白壁・柯南小鎮</text>
+          <text class="svg-halo" x="765" y="215" text-anchor="middle" font-size="10.5" fill="#C85A32">(住 羽合溫泉 望湖樓 ♨️)</text>
 
-          <circle cx="855" cy="80" r="9.5" fill="#C85A32"/><text x="840" y="58" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3E3028">D2 鳥取砂丘・浦富海岸・賀露市場</text>
-          <text x="840" y="106" text-anchor="middle" font-size="10.5" fill="#6E5D53">(住 Super Hotel 鳥取站北口 ♨️)</text>
+          <!-- D2 鳥取砂丘・浦富海岸・賀露市場（右上） -->
+          <circle cx="855" cy="96" r="9.5" fill="#C85A32"/>
+          <text class="svg-halo" x="830" y="56" text-anchor="middle" font-size="11.5" font-weight="700" fill="#3E3028">D2 鳥取砂丘・浦富海岸・賀露市場</text>
+          <text class="svg-halo" x="830" y="74" text-anchor="middle" font-size="10.5" fill="#6E5D53">(住 Super Hotel 鳥取站北口 ♨️)</text>
         </svg>
       </div>
 
-      <div class="grid-3" style="margin-top: 10px; flex: 0 0 auto;" data-lock-style="true">
-        <div class="paper-card" style="padding: 12px 13px; gap: 6px;">
+      <div class="grid-3" style="margin-top: 14px; flex: 0 0 auto;" data-lock-style="true">
+        <div class="paper-card" style="padding: 15px 14px; gap: 8px;">
           <h3 style="font-size: clamp(14px, 1.22vw, 17.5px);"><span>🛡️ 避開週二公休（02/16 二）</span></h3>
-          <p style="font-size:12.5px; color:var(--hojicha-muted); line-height:1.58;">
+          <p style="font-size:12.5px; color:var(--hojicha-muted); line-height:1.65;">
             <span style="display:block; white-space:nowrap;">• <strong>砂丘布丁</strong>（週二三休）➔ 排 <strong>D2 週六</strong></span>
             <span style="display:block; white-space:nowrap;">• <strong>鳥取花回廊</strong>（週二休）➔ 排 <strong>D4 週一</strong></span>
             <span style="display:block; white-space:nowrap; letter-spacing:-0.35px;">• <strong>境港直賣中心</strong>（週二休）➔ 排 <strong>D8 週五</strong></span>
           </p>
         </div>
-        <div class="paper-card" style="padding: 12px 15px; gap: 6px;">
+        <div class="paper-card" style="padding: 15px 16px; gap: 8px;">
           <h3 style="font-size: clamp(14px, 1.22vw, 17.5px);"><span>🛡️ 避開週三公休（02/17 三）</span></h3>
-          <p style="font-size:12.5px; color:var(--hojicha-muted); line-height:1.58;">
+          <p style="font-size:12.5px; color:var(--hojicha-muted); line-height:1.65;">
             • D6 週三造訪出雲大社時，神門通「砂屋」與「荒木屋」週三定休，當天直接鎖定免撲空的百年名店<strong>「田中屋」或「看雲樓」</strong>！
           </p>
         </div>
-        <div class="paper-card" style="padding: 12px 15px; gap: 6px;">
+        <div class="paper-card" style="padding: 15px 16px; gap: 8px;">
           <h3 style="font-size: clamp(14px, 1.22vw, 17.5px);"><span>♨️ 住宿節奏（1奢華＋2野乃＋4商務）</span></h3>
-          <p style="font-size:12.5px; color:var(--hojicha-muted); line-height:1.58;">
+          <p style="font-size:12.5px; color:var(--hojicha-muted); line-height:1.65;">
             • <strong>D3 羽合望湖樓</strong>享湖上露天風呂一泊二食；<strong>D5/D7 住塌塌米天然溫泉「御宿野乃」</strong>，搭配 4 晚市區大浴場商務飯店！
           </p>
         </div>
@@ -1773,13 +1818,19 @@
             <li><strong>紅楚蟹（紅ズワイガニ）＆ 猛者蝦</strong><br>境港產量日本第一！水分多、甜度極高，價格僅松葉蟹的 1/3～1/2，推薦在 <strong>Day 2 賀露市場</strong> 與 <strong>Day 8 境港直賣中心</strong> 整隻現買現拆！</li>
             <li><strong>漁師小屋「麥穗」（Day 5 松江晚餐）</strong><br>松江寺町超人氣隠れ家海鮮居酒屋，必點名物<strong>「元祖・鯖魚涮涮鍋（鯖しゃぶ）」</strong>與日本海旬魚刺身盛合。</li>
           </ul>
-          <div class="tag-row" style="margin-top:auto; padding-top:4px;">
-            <a class="ext-link" href="https://maps.google.com/?q=鳥取港海鮮市場かろいち" target="_blank">📍 賀露市場</a>
-            <a class="ext-link park" href="https://maps.google.com/?q=鳥取港海鮮市場かろいち+駐車場" target="_blank">🅿️ 賀露市場停車場</a>
-            <a class="ext-link" href="https://maps.google.com/?q=漁師小屋+麦穂" target="_blank">📍 漁師小屋麥穗</a>
-            <a class="ext-link park" href="https://maps.google.com/?q=タイムズ松江寺町" target="_blank">🅿️ タイムズ松江寺町</a>
-            <a class="ext-link" href="https://maps.google.com/?q=境港水産物直売センター" target="_blank">📍 境港直賣中心</a>
-            <a class="ext-link park" href="https://maps.google.com/?q=境港水産物直売センター+駐車場" target="_blank">🅿️ 直賣中心停車場</a>
+          <div class="map-pair-list">
+            <div class="map-pair-row">
+              <a class="ext-link" href="https://maps.google.com/?q=鳥取港海鮮市場かろいち" target="_blank">📍 賀露市場 KAROICHI</a>
+              <a class="ext-link park" href="https://maps.google.com/?q=鳥取港海鮮市場かろいち+駐車場" target="_blank">🅿️ 賀露市場免費停車場</a>
+            </div>
+            <div class="map-pair-row">
+              <a class="ext-link" href="https://maps.google.com/?q=境港水産物直売センター" target="_blank">📍 境港水產物直賣中心</a>
+              <a class="ext-link park" href="https://maps.google.com/?q=境港水産物直売センター+駐車場" target="_blank">🅿️ 直賣中心免費停車場</a>
+            </div>
+            <div class="map-pair-row">
+              <a class="ext-link" href="https://maps.google.com/?q=漁師小屋+麦穂" target="_blank">📍 漁師小屋「麥穗」</a>
+              <a class="ext-link park" href="https://maps.google.com/?q=タイムズ松江寺町" target="_blank">🅿️ タイムズ松江寺町</a>
+            </div>
           </div>
         </div>
 
@@ -1789,12 +1840,15 @@
             <li><strong>鳥取和牛「萬葉牛（オレイン55）」</strong><br>油酸（Olein）含量達 55% 以上，脂肪融點極低、入口即化卻清爽不膩。<br>📍 <strong>Day 2 晚餐：燒肉牛王 鳥取站北口店</strong>（記得提前網路預約！）</li>
             <li><strong>日本第一「島根和牛（幻之銀山和牛）」</strong><br>多次榮獲全國和牛能力共進會「內閣總理大臣賞」，大田市幻之黑毛和牛「銀山和牛」每年僅產約 100 頭，肉香濃郁迷人。<br>📍 <strong>Day 7 午餐：燒肉銀山和牛 卡拉科羅店</strong></li>
           </ul>
-          <div class="tag-row" style="margin-top:auto; padding-top:4px;">
-            <a class="ext-link" href="https://maps.google.com/?q=焼肉牛王+鳥取駅前店" target="_blank">📍 燒肉牛王</a>
-            <a class="ext-link park" href="https://maps.google.com/?q=日ノ丸パーキング今町" target="_blank">🅿️ 日ノ丸パーキング今町</a>
-            <a class="ext-link" href="https://maps.google.com/?q=焼肉+銀山和牛+カラコロ店" target="_blank">📍 燒肉銀山和牛</a>
-            <a class="ext-link park" href="https://maps.google.com/?q=王水堂カラコロ駐車場" target="_blank">🅿️ 王水堂カラコロ駐車場</a>
-            <a class="ext-link park" href="https://maps.google.com/?q=松江城大手前駐車場" target="_blank">🅿️ 松江城大手前駐車場</a>
+          <div class="map-pair-list">
+            <div class="map-pair-row">
+              <a class="ext-link" href="https://maps.google.com/?q=焼肉牛王+鳥取駅前店" target="_blank">📍 燒肉牛王 鳥取站北口店</a>
+              <a class="ext-link park" href="https://maps.google.com/?q=日ノ丸パーキング今町" target="_blank">🅿️ 日ノ丸パーキング今町</a>
+            </div>
+            <div class="map-pair-row">
+              <a class="ext-link" href="https://maps.google.com/?q=焼肉+銀山和牛+カラコロ店" target="_blank">📍 燒肉銀山和牛 卡拉科羅店</a>
+              <a class="ext-link park" href="https://maps.google.com/?q=王水堂カラコロ駐車場" target="_blank">🅿️ 王水堂カラコロ駐車場</a>
+            </div>
           </div>
         </div>
 
@@ -1805,19 +1859,26 @@
             <li><strong>島根出雲蕎麥麵（日本三大蕎麥）</strong><br>連殼研磨香氣濃烈！必點三層<strong>「割子蕎麥麵（冷）」＋「釜揚蕎麥麵（熱湯）」</strong>。<br>📍 <strong>Day 6 神門通：田中屋／看雲樓</strong></li>
             <li><strong>冬日甜點三寶</strong>：<strong>砂丘 Totto 布丁</strong>、<strong>豪圓湯院湯豆腐</strong>、<strong>出雲善哉紅豆湯</strong>。</li>
           </ul>
-          <div class="tag-row" style="margin-top:auto; padding-top:4px;">
-            <a class="ext-link" href="https://maps.google.com/?q=Japanese+TOTTORI+Noodle+藤喜" target="_blank">📍 藤喜拉麵</a>
-            <a class="ext-link park" href="https://maps.google.com/?q=日ノ丸パーキング今町" target="_blank">🅿️ 日ノ丸パーキング今町</a>
-            <a class="ext-link" href="https://maps.google.com/?q=そば処+田中屋" target="_blank">📍 田中屋</a>
-            <a class="ext-link" href="https://maps.google.com/?q=看雲楼" target="_blank">📍 看雲樓</a>
-            <a class="ext-link park" href="https://maps.google.com/?q=出雲大社大駐車場" target="_blank">🅿️ 出雲大社大駐車場</a>
+          <div class="map-pair-list">
+            <div class="map-pair-row">
+              <a class="ext-link" href="https://maps.google.com/?q=Japanese+TOTTORI+Noodle+藤喜" target="_blank">📍 牛骨拉麵 藤喜</a>
+              <a class="ext-link park" href="https://maps.google.com/?q=日ノ丸パーキング今町" target="_blank">🅿️ 日ノ丸パーキング今町</a>
+            </div>
+            <div class="map-pair-row">
+              <a class="ext-link" href="https://maps.google.com/?q=そば処+田中屋" target="_blank">📍 出雲蕎麥麵 田中屋</a>
+              <a class="ext-link park" href="https://maps.google.com/?q=出雲大社大駐車場" target="_blank">🅿️ 出雲大社免費大停車場</a>
+            </div>
+            <div class="map-pair-row">
+              <a class="ext-link" href="https://maps.google.com/?q=看雲楼" target="_blank">📍 出雲蕎麥麵 看雲樓</a>
+              <a class="ext-link park" href="https://maps.google.com/?q=出雲大社大駐車場" target="_blank">🅿️ 出雲大社免費大停車場</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- ==================== SLIDE 15: 預算結構表 (含互動試算) ==================== -->
-    <section class="slide" data-nav="預算表" data-title="8天7夜預估花費與預算結構表" data-sub="1晚羽合望湖樓＋2晚御宿野乃(松江/境港)＋4晚溫泉商務飯店、雙蟹與雙和牛美食預算">
+    <section class="slide" data-nav="預算表" data-title="8天7夜預估花費與預算表" data-sub="1晚羽合望湖樓＋2晚御宿野乃(松江/境港)＋4晚溫泉商務飯店、雙蟹與雙和牛美食預算">
       <div class="mag-header">
         <div class="mag-top-row">
           <span class="mag-kicker">CHAPTER 04 ｜ ESTIMATED BUDGET BREAKDOWN (FINAL)</span>
@@ -1830,7 +1891,7 @@
             </select>
           </div>
         </div>
-        <h1>8天7夜預估花費與預算結構表（可切換人數試算）</h1>
+        <h1>8天7夜預估花費與預算表</h1>
       </div>
 
       <table class="editorial-table">
@@ -1909,7 +1970,7 @@
             <button class="ctrl-btn" style="padding:3px 10px; font-size:11.5px;" onclick="resetChecklist()">重置勾選</button>
           </div>
         </div>
-        <h1>互動式行前準備與預約雷達清單（點擊可直接打勾儲存）</h1>
+        <h1>互動式行前準備與預約雷達清單</h1>
       </div>
 
       <div class="grid-3">
